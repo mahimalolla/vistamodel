@@ -19,6 +19,7 @@ def node3(): from split_dataset import split_dataset; split_dataset()
 def node4(): from ge_stats import generate_ge_stats; generate_ge_stats()
 def node5(): from schema_inference import infer_schema; infer_schema()
 def node6(): from anomaly_detection import detect_anomalies; detect_anomalies()
+def node6b(): from bias_detection import detect_bias; detect_bias()
 def node7(): from dataset_slicing import create_slices; create_slices()
 def node8(): from dataset_approval import approve_dataset; approve_dataset()
 def node9(): from upload_gcs import upload_to_gcs; upload_to_gcs()
@@ -42,10 +43,11 @@ with DAG(
     t4  = PythonOperator(task_id="node4_ge_statistics",            python_callable=node4)
     t5  = PythonOperator(task_id="node5_schema_inference",         python_callable=node5)
     t6  = PythonOperator(task_id="node6_anomaly_detection",        python_callable=node6)
+    t6b = PythonOperator(task_id="node6b_bias_detection", python_callable=node6b)
     t7  = PythonOperator(task_id="node7_dataset_slicing",          python_callable=node7)
     t8  = PythonOperator(task_id="node8_dataset_approval",         python_callable=node8)
     t9  = PythonOperator(task_id="node9_upload_to_gcs",            python_callable=node9)
     t_dvc = PythonOperator(task_id="node9b_dvc_push",              python_callable=node_dvc_push)
     t10 = PythonOperator(task_id="node10_trigger_online_pipeline", python_callable=node10)
 
-    t0 >> t1 >> t2 >> t3 >> t4 >> t5 >> t6 >> t7 >> t8 >> t9 >> t_dvc >> t10
+    t0 >> t1 >> t2 >> t3 >> t4 >> t5 >> t6 >> t6b >> t7 >> t8 >> t9 >> t_dvc >> t10
