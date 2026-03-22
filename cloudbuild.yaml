@@ -136,13 +136,8 @@ steps:
         print('Build logged to BigQuery')
         "
 
-availableSecrets:
-  secretManager:
-    - versionName: projects/mlops-489703/secrets/HF_TOKEN/versions/latest
-      env: 'HF_TOKEN'
-
 substitutions:
-  _REGION: 'us-ntral1'
+  _REGION: 'us-central1'
   _PROJECT: 'mlops-489703'
 
 options:
