@@ -33,7 +33,7 @@ steps:
           echo "training/ changed — rebuilding"
           docker build --platform linux/amd64 --no-cache \
             -t us-central1-docker.pkg.dev/mlops-489703/translation-models/gemma-trainer:$SHORT_SHA \
-        -t us-central1-docker.pkg.dev/mlops-489703/translation-models/gemma-trainer:latest \
+            -t us-central1-docker.pkg.dev/mlops-489703/translation-models/gemma-trainer:latest \
             ./training
         else
           echo "training/ unchanged — skipping"
@@ -61,7 +61,7 @@ steps:
           echo "inference/ changed — rebuilding"
           docker build --platform linux/amd64 --no-cache \
             -t us-central1-docker.pkg.dev/mlops-489703/translation-models/inference-api:$SHORT_SHA \
-            -t us-central1-docker.v/mlops-489703/translation-models/inference-api:latest \
+            -t us-central1-docker.pkg.dev/mlops-489703/translation-models/inference-api:latest \
             ./inference
         else
           echo "inference/ unchanged — skipping"
@@ -89,7 +89,8 @@ steps:
           pip install google-cloud-storage sacrebleu --quiet
           python scripts/evaluate_model.py \
             --model_gcs=gs://livespeechinterpreter-training/models/gemma3-4b-translation-v17 \
-            --test_gcs=gs://livespeechinterpreter/datasets/v2_approved/test.jsonl \         --slices_gcs=gs://livespeechinterpreter/datasets/v2_approved \
+            --test_gcs=gs://livespeechinterpreter/datasets/v2_approved/test.jsonl \
+            --slices_gcs=gs://livespeechinterpreter/datasets/v2_approved \
             --bleu_threshold=25 \
             --bias_threshold=0.30
         else
@@ -113,7 +114,7 @@ steps:
             --min-instances=1 \
             --max-instances=2 \
             --service-account=mlops-pipeline@mlops-489703.iam.gserviceaccount.com \
-            --set-env-vars=ADAPTER_GCS=gs://livespeechinterpreter-training/models/gemma3-4b-translation-v17,PROJECT_ID=mlops-489703,BQ_DATASET=anslation_monitoring,BQ_TABLE=inference_logs,TOKENIZERS_PARALLELISM=false \
+            --set-env-vars=ADAPTER_GCS=gs://livespeechinterpreter-training/models/gemma3-4b-translation-v17,PROJECT_ID=mlops-489703,BQ_DATASET=translation_monitoring,BQ_TABLE=inference_logs,TOKENIZERS_PARALLELISM=false,MLFLOW_TRACKING_URI=https://mlflow-server-1050963407386.us-central1.run.app \
             --allow-unauthenticated
         else
           echo "inference/ unchanged — skipping deploy"
