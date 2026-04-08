@@ -32,10 +32,16 @@ curl -X POST https://translation-api-1050963407386.us-central1.run.app/translate
 # 1) Gmail: Google Account → Security → 2-Step Verification → App passwords → create "Cloud Build"
 # 2) Create secret (use the 16-char app password, no spaces):
 #    echo -n 'YOUR_APP_PASSWORD' | gcloud secrets create cicd-gmail-app-password --project=mlops-489703 --data-file=-
-# 3) Allow Cloud Build to read it:
+# 3) Allow Cloud Build to read the secret (run this script — grants both common SAs):
+#    bash scripts/grant_cicd_email_secret_iam.sh
+#    Or manually:
 #    PN=$(gcloud projects describe mlops-489703 --format='value(projectNumber)')
 #    gcloud secrets add-iam-policy-binding cicd-gmail-app-password --project=mlops-489703 \
 #      --member=serviceAccount:${PN}@cloudbuild.gserviceaccount.com --role=roles/secretmanager.secretAccessor
-# 4) Change recipient: edit cloudbuild.yaml substitutions _NOTIFY_EMAIL
-# 5) If notify-email fails with PermissionDenied on the secret, grant secretAccessor to
-#    ${PN}@cloudbuild.gserviceaccount.com on cicd-gmail-app-password (see step 3).
+#    gcloud secrets add-iam-policy-binding cicd-gmail-app-password --project=mlops-489703 \
+#      --member=serviceAccount:${PN}-compute@developer.gserviceaccount.com --role=roles/secretmanager.secretAccessor
+# 4) Still PermissionDenied? Your TRIGGER may use a custom service account. Console:
+#    Cloud Build → Triggers → (your trigger) → Service account — copy that email and:
+#    gcloud secrets add-iam-policy-binding cicd-gmail-app-password --project=mlops-489703 \
+#      --member='serviceAccount:THE_EMAIL_FROM_TRIGGER' --role=roles/secretmanager.secretAccessor
+# 5) Change recipient: edit cloudbuild.yaml substitutions _NOTIFY_EMAIL
