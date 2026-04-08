@@ -3,8 +3,6 @@
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![FastAPI](https://img.shields.io/badge/FastAPI-API-green)
 ![GCP](https://img.shields.io/badge/GCP-Cloud-orange)
-![MLOps](https://img.shields.io/badge/MLOps-End--to--End-purple)
-![Status](https://img.shields.io/badge/Status-Production--Ready-brightgreen)
 
 ---
 
