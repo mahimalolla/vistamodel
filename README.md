@@ -184,7 +184,7 @@ Results are logged to MLflow and saved to `reports/sensitivity_report.json`.
 
 ## Running the System
 
-### Offline Pipeline (Airflow)
+### Pipeline DAGs (Airflow)
 
 ```bash
 source mlops_env/bin/activate
@@ -211,7 +211,7 @@ curl -X POST https://translation-api-1050963407386.us-central1.run.app/translate
   -d '{"text": "El contrato debe ser firmado antes del viernes.", "direction": "es_to_en", "domain": "legal"}'
 ```
 
-### Backfill a Vertex Training Run to MLflow
+### Vertex Training Run to MLflow
 
 ```bash
 export MLFLOW_TRACKING_URI=https://mlflow-server-1050963407386.us-central1.run.app
