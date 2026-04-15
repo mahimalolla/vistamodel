@@ -44,69 +44,78 @@ const Landing = () => {
       {/* Animated starfield */}
       <StarfieldBackground />
 
-      {/* ─── Navbar ─── */}
-      <nav className="sticky top-0 z-50 border-b border-white/10 bg-background/55 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/45 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
-        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-8 py-4 md:py-5">
-          <div className="flex items-center gap-3 md:gap-4">
-            <div className="relative">
-              <div className="absolute inset-0 rounded-full bg-primary/20 blur-lg" />
-              <img
-                src={isDark ? vistaLogoDark : vistaLogo}
-                alt="VISTA"
-                className="relative w-11 h-11 md:w-14 md:h-14 rounded-xl object-contain"
-              />
-            </div>
-            <div className="flex flex-col leading-none">
-              <span className="text-lg md:text-2xl font-extrabold tracking-tight text-foreground">
-                VISTA
-              </span>
-              <span className="hidden md:block text-[11px] uppercase tracking-[0.22em] text-muted-foreground mt-1">
-                Real-time voice translation
-              </span>
-            </div>
-          </div>
+{/* ─── Navbar ─── */}
+<nav className="sticky top-0 z-50 border-b border-white/10 bg-background/55 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/45 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+  <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-8 py-4 md:py-5">
+    
+    {/* Logo */}
+    <div className="flex items-center gap-3 md:gap-4">
+      <div className="relative">
+        <div className="absolute inset-0 rounded-full bg-primary/20 blur-lg" />
+        <img
+          src={isDark ? vistaLogoDark : vistaLogo}
+          alt="VISTA"
+          className="relative w-11 h-11 md:w-14 md:h-14 rounded-xl object-contain"
+        />
+      </div>
+      <div className="flex flex-col leading-none">
+        <span className="text-lg md:text-2xl font-extrabold tracking-tight text-foreground">
+          VISTA
+        </span>
+        <span className="hidden md:block text-[11px] uppercase tracking-[0.22em] text-muted-foreground mt-1">
+          Real-time voice translation
+        </span>
+      </div>
+    </div>
 
-          <div className="hidden md:flex items-center gap-8 lg:gap-10 text-sm md:text-base font-medium text-muted-foreground">
-            <a
-              href="#features"
-              className="transition-all duration-200 hover:text-foreground hover:scale-105"
-            >
-              Features
-            </a>
-            <a
-              href="#domains"
-              className="transition-all duration-200 hover:text-foreground hover:scale-105"
-            >
-              Domains
-            </a>
-            <a
-              href="#how-it-works"
-              className="transition-all duration-200 hover:text-foreground hover:scale-105"
-            >
-              How It Works
-            </a>
-            <a
-              href="#architecture"
-              className="transition-all duration-200 hover:text-foreground hover:scale-105"
-            >
-              Architecture
-            </a>
-          </div>
+    {/* Nav Links */}
+    <div className="hidden md:flex items-center gap-8 lg:gap-10 text-sm md:text-base font-medium text-muted-foreground">
+      <a href="#features" className="hover:text-foreground transition-all hover:scale-105">
+        Features
+      </a>
+      <a href="#domains" className="hover:text-foreground transition-all hover:scale-105">
+        Domains
+      </a>
+      <a href="#how-it-works" className="hover:text-foreground transition-all hover:scale-105">
+        How It Works
+      </a>
+      <a href="#architecture" className="hover:text-foreground transition-all hover:scale-105">
+        Architecture
+      </a>
+      <button
+        onClick={() => navigate("/dashboard")}
+        className="hover:text-foreground transition-all hover:scale-105"
+      >
+        Dashboard
+      </button>
+    </div>
 
-          <div className="flex items-center gap-3 md:gap-4">
-            <div className="scale-110 md:scale-125">
-              <ThemeToggle />
-            </div>
-            <button
-              onClick={() => navigate("/translate")}
-              className="group inline-flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-xl bg-primary text-primary-foreground text-sm md:text-base font-semibold transition-all duration-300 shadow-[0_0_25px_rgba(255,165,0,0.22)] hover:bg-primary/90 hover:scale-[1.03] active:scale-[0.98]"
-            >
-              Launch App
-              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
-            </button>
-          </div>
-        </div>
-      </nav>
+    {/* Right side */}
+    <div className="flex items-center gap-3 md:gap-4">
+      <div className="scale-110 md:scale-125">
+        <ThemeToggle />
+      </div>
+
+      {/* Dashboard button (mobile visible) */}
+      <button
+        onClick={() => navigate("/dashboard")}
+        className="hidden sm:inline-flex px-4 py-2 rounded-lg border border-border text-sm font-medium hover:bg-muted transition-colors"
+      >
+        Dashboard
+      </button>
+
+      {/* Launch */}
+      <button
+        onClick={() => navigate("/translate")}
+        className="group inline-flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-xl bg-primary text-primary-foreground text-sm md:text-base font-semibold transition-all duration-300 shadow-[0_0_25px_rgba(255,165,0,0.22)] hover:bg-primary/90 hover:scale-[1.03] active:scale-[0.98]"
+      >
+        Launch App
+        <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
+      </button>
+    </div>
+
+  </div>
+</nav>
 
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden z-10">
