@@ -136,7 +136,13 @@ const Landing = () => {
             <p className="text-sm md:text-base text-white/80 max-w-3xl mx-auto tracking-wide">
               Voice-based Interpretation & Streaming Translation Architecture
             </p>
+            <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mt-4 leading-relaxed">
+  VISTA listens, transcribes, and translates your speech in real-time
+  with domain-aware precision for medical, legal, and general
+  conversations.
+</p>
           </div>
+          
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <button
