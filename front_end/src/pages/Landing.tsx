@@ -46,7 +46,7 @@ const Landing = () => {
 
       {/* ─── Navbar ─── */}
       <nav className="sticky top-0 z-50 border-b border-border/50 bg-card/60 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-3">
+        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-5">
           <div className="flex items-center gap-2.5">
             <img
               src={isDark ? vistaLogoDark : vistaLogo}
