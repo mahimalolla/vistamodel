@@ -289,8 +289,10 @@ const Landing = () => {
         </div>
       </section>
 
-      <section id="dashboard" className="py-20 px-6 relative z-10">
+<section id="dashboard" className="py-20 px-6 relative z-10">
   <div className="max-w-7xl mx-auto">
+    
+    {/* Header */}
     <div className="text-center mb-12">
       <p className="text-xs font-semibold text-primary uppercase tracking-widest mb-3">
         Dashboard
@@ -303,9 +305,10 @@ const Landing = () => {
       </p>
     </div>
 
+    {/* Top Cards */}
     <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-5 mb-8">
       {[
-        { label: "Active Session", value: "Live" },
+        { label: "Active Session", value: "Live", highlight: true },
         { label: "Language Pair", value: "English → Spanish" },
         { label: "Mode", value: "Medical" },
         { label: "Voice Output", value: "Enabled" },
@@ -315,18 +318,39 @@ const Landing = () => {
           className="rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-6 shadow-sm hover:-translate-y-1 transition-all duration-300"
         >
           <p className="text-sm text-muted-foreground mb-2">{item.label}</p>
-          <h3 className="text-xl md:text-2xl font-bold text-foreground">
-            {item.value}
-          </h3>
+
+          {/* Special Live UI */}
+          {item.highlight ? (
+            <div className="flex items-center gap-3">
+              {/* Live badge */}
+              <div className="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-sm font-medium">
+                <span className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse" />
+                Live
+              </div>
+
+              {/* Green button */}
+              <button className="px-4 py-1.5 rounded-full bg-emerald-500 text-white text-sm font-medium hover:bg-emerald-600 transition-all shadow-[0_0_15px_rgba(16,185,129,0.4)] hover:shadow-[0_0_25px_rgba(16,185,129,0.6)]">
+                Active
+              </button>
+            </div>
+          ) : (
+            <h3 className="text-xl md:text-2xl font-bold text-foreground">
+              {item.value}
+            </h3>
+          )}
         </div>
       ))}
     </div>
 
+    {/* Main Grid */}
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-6">
+      
+      {/* Recent Sessions */}
       <div className="xl:col-span-2 rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-6">
         <h3 className="text-xl font-bold tracking-tight mb-4">
           Recent Sessions
         </h3>
+
         <div className="space-y-4">
           {[
             "Patient Intake Conversation",
@@ -335,7 +359,7 @@ const Landing = () => {
           ].map((title) => (
             <div
               key={title}
-              className="rounded-xl border border-border/50 bg-background/40 p-4"
+              className="rounded-xl border border-border/50 bg-background/40 p-4 hover:border-primary/30 hover:-translate-y-0.5 transition-all duration-300"
             >
               <p className="font-medium text-foreground">{title}</p>
               <p className="text-sm text-muted-foreground mt-1">
@@ -346,35 +370,43 @@ const Landing = () => {
         </div>
       </div>
 
+      {/* Trust & Privacy */}
       <div className="rounded-2xl border border-border/60 bg-card/80 backdrop-blur-sm p-6">
         <h3 className="text-xl font-bold tracking-tight mb-4">
           Trust & Privacy
         </h3>
+
         <div className="space-y-3">
-          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
-            <p className="font-medium text-foreground">HIPAA Ready</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Designed for healthcare-focused privacy workflows.
-            </p>
-          </div>
-          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
-            <p className="font-medium text-foreground">GDPR Ready</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Supports privacy-first global usage.
-            </p>
-          </div>
-          <div className="rounded-xl border border-border/50 bg-background/40 p-4">
-            <p className="font-medium text-foreground">Privacy First</p>
-            <p className="text-sm text-muted-foreground mt-1">
-              Secure handling of interpreted sessions.
-            </p>
-          </div>
+          {[
+            {
+              title: "HIPAA Ready",
+              desc: "Designed for healthcare-focused privacy workflows.",
+            },
+            {
+              title: "GDPR Ready",
+              desc: "Supports privacy-first global usage.",
+            },
+            {
+              title: "Privacy First",
+              desc: "Secure handling of interpreted sessions.",
+            },
+          ].map((item) => (
+            <div
+              key={item.title}
+              className="rounded-xl border border-border/50 bg-background/40 p-4 hover:border-primary/30 transition-all"
+            >
+              <p className="font-medium text-foreground">{item.title}</p>
+              <p className="text-sm text-muted-foreground mt-1">
+                {item.desc}
+              </p>
+            </div>
+          ))}
         </div>
       </div>
+
     </div>
   </div>
 </section>
-      
       {/* ─── Domains ─── */}
       <section id="domains" className="py-20 px-6 bg-muted/30 relative z-10">
         <div className="max-w-6xl mx-auto">
