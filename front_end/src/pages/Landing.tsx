@@ -83,16 +83,20 @@ const Landing = () => {
             Real-time voice translation is live
           </div>
 
-          <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-6">
-            Break Language Barriers{" "}
-            <span className="text-primary">Instantly</span>
-          </h1>
+          <div className="mb-8">
+            <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight mb-4">
+              Break Language Barriers{" "}
+              <span className="text-primary">Instantly</span>
+            </h1>
 
-          <p className="text-lg md:text-xl text-muted-foreground max-w-2xl mx-auto mb-10 leading-relaxed">
-            VISTA listens, transcribes, and translates your speech in real-time
-            with domain-aware precision for medical, legal, and general
-            conversations.
-          </p>
+            <h2 className="text-2xl md:text-3xl font-semibold text-primary mb-3">
+              with VISTA
+            </h2>
+
+            <p className="text-sm md:text-base text-muted-foreground max-w-2xl mx-auto tracking-wide">
+              Voice-based Interpretation & Streaming Translation Architecture
+            </p>
+          </div>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <button
