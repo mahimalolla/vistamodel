@@ -108,7 +108,7 @@ const Landing = () => {
         </div>
       </nav>
 
-       {/* ─── Hero ─── */}
+      {/* ─── Hero ─── */}
       <section className="relative overflow-hidden z-10">
         {/* Background glow */}
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl pointer-events-none" />
@@ -127,31 +127,28 @@ const Landing = () => {
             </h1>
 
             <h2 className="text-3xl md:text-5xl font-bold mb-3">
-              with{" "}
-              <span className="text-primary">
-                VISTA
-              </span>
+              with <span className="text-primary">VISTA</span>
             </h2>
 
             <p className="text-sm md:text-base text-white/80 max-w-3xl mx-auto tracking-wide">
               Voice-based Interpretation & Streaming Translation Architecture
             </p>
+
             <p className="text-base md:text-lg text-muted-foreground max-w-2xl mx-auto mt-4 leading-relaxed">
-  VISTA listens, transcribes, and translates your speech in real-time
-  with domain-aware precision for medical, legal, and general
-  conversations.
-</p>
+              VISTA listens, transcribes, and translates your speech in
+              real-time with domain-aware precision for medical, legal, and
+              general conversations.
+            </p>
           </div>
-          
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 mb-8">
             <button
               onClick={() => navigate("/translate")}
-              className="flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-medium hover:bg-primary/90 transition-all shadow-lg shadow-primary/25 hover:shadow-primary/40 hover:scale-[1.02] active:scale-[0.98]"
+              className="group flex items-center gap-2 px-6 py-3 rounded-xl bg-primary text-primary-foreground font-semibold hover:bg-primary/90 transition-all shadow-[0_0_30px_rgba(255,165,0,0.3)] hover:shadow-[0_0_40px_rgba(255,165,0,0.5)] hover:scale-[1.04] active:scale-[0.98]"
             >
               <Mic className="w-5 h-5" />
               Start Translating
-              <ArrowRight className="w-4 h-4" />
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </button>
             <a
               href="#how-it-works"
@@ -160,6 +157,10 @@ const Landing = () => {
               See How It Works
             </a>
           </div>
+
+          <p className="text-xs uppercase tracking-widest text-muted-foreground mb-4">
+            Built for healthcare & legal workflows
+          </p>
 
           {/* Compliance badges */}
           <div className="flex flex-wrap items-center justify-center gap-3 mb-10">
@@ -205,6 +206,7 @@ const Landing = () => {
           </div>
         </div>
       </section>
+
       {/* ─── Features ─── */}
       <section id="features" className="py-20 px-6 relative z-10">
         <div className="max-w-6xl mx-auto">
@@ -256,7 +258,7 @@ const Landing = () => {
             ].map((feature) => (
               <div
                 key={feature.title}
-                className="group p-6 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.1)] transition-all duration-300"
+                className="group p-6 rounded-xl border border-border/60 bg-card hover:border-primary/30 hover:shadow-[0_0_20px_-5px_hsl(var(--primary)/0.1)] hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/15 transition-colors">
                   <feature.icon className="w-5 h-5 text-primary" />
@@ -284,7 +286,7 @@ const Landing = () => {
               Specialized Translation Modes
             </h2>
             <p className="text-muted-foreground mt-3 max-w-xl mx-auto">
-              VISTA doesn't just translate words — it understands context.
+              VISTA doesn&apos;t just translate words — it understands context.
               Choose a domain for terminology-accurate results.
             </p>
           </div>
@@ -303,7 +305,8 @@ const Landing = () => {
                 icon: Stethoscope,
                 title: "Medical",
                 desc: "Clinical terminology, patient communication, and healthcare vocabulary with precise accuracy.",
-                example: '"The patient requires surgery" → "El paciente requiere cirugía"',
+                example:
+                  '"The patient requires surgery" → "El paciente requiere cirugía"',
                 color: "text-emerald-500",
                 bg: "bg-emerald-500/10",
               },
@@ -311,14 +314,15 @@ const Landing = () => {
                 icon: Scale,
                 title: "Legal",
                 desc: "Legal terminology, contracts, court proceedings, and formal documentation language.",
-                example: '"The contract must be signed" → "El contrato debe ser firmado"',
+                example:
+                  '"The contract must be signed" → "El contrato debe ser firmado"',
                 color: "text-amber-500",
                 bg: "bg-amber-500/10",
               },
             ].map((d) => (
               <div
                 key={d.title}
-                className="p-6 rounded-xl border border-border/60 bg-card hover:border-primary/20 transition-all"
+                className="p-6 rounded-xl border border-border/60 bg-card hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
               >
                 <div
                   className={`w-12 h-12 rounded-xl ${d.bg} flex items-center justify-center mb-5`}
@@ -376,16 +380,13 @@ const Landing = () => {
               },
             ].map((s, i) => (
               <div key={s.step} className="flex gap-6 items-start">
-                {/* Timeline */}
                 <div className="flex flex-col items-center">
                   <div className="w-12 h-12 rounded-full bg-primary/10 border-2 border-primary/30 flex items-center justify-center shrink-0">
                     <s.icon className="w-5 h-5 text-primary" />
                   </div>
-                  {i < 2 && (
-                    <div className="w-px h-16 bg-border mt-2" />
-                  )}
+                  {i < 2 && <div className="w-px h-16 bg-border mt-2" />}
                 </div>
-                {/* Content */}
+
                 <div className="pb-10">
                   <div className="flex items-center gap-2 mb-1">
                     <span className="text-[10px] font-mono font-bold text-primary uppercase tracking-widest">
@@ -446,7 +447,7 @@ const Landing = () => {
             ].map((item) => (
               <div
                 key={item.title}
-                className="flex gap-4 p-5 rounded-xl border border-border/60 bg-card"
+                className="flex gap-4 p-5 rounded-xl border border-border/60 bg-card hover:border-primary/20 hover:-translate-y-1 transition-all duration-300"
               >
                 <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center shrink-0">
                   <item.icon className="w-5 h-5 text-primary" />
@@ -498,10 +499,30 @@ const Landing = () => {
             <span className="text-sm font-semibold">VISTA</span>
           </div>
           <div className="flex items-center gap-6 text-sm text-muted-foreground">
-            <a href="#features" className="hover:text-foreground transition-colors">Features</a>
-            <a href="#domains" className="hover:text-foreground transition-colors">Domains</a>
-            <a href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</a>
-            <a href="#architecture" className="hover:text-foreground transition-colors">Architecture</a>
+            <a
+              href="#features"
+              className="hover:text-foreground transition-colors"
+            >
+              Features
+            </a>
+            <a
+              href="#domains"
+              className="hover:text-foreground transition-colors"
+            >
+              Domains
+            </a>
+            <a
+              href="#how-it-works"
+              className="hover:text-foreground transition-colors"
+            >
+              How It Works
+            </a>
+            <a
+              href="#architecture"
+              className="hover:text-foreground transition-colors"
+            >
+              Architecture
+            </a>
           </div>
           <p className="text-xs text-muted-foreground">
             © 2025 VISTA. All rights reserved.
