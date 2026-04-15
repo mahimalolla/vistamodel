@@ -70,18 +70,32 @@ const Landing = () => {
 
     {/* Nav Links */}
     <div className="hidden md:flex items-center gap-8 lg:gap-10 text-sm md:text-base font-medium text-muted-foreground">
-      <a href="#features" className="hover:text-foreground transition-all hover:scale-105">
+      <a
+        href="#features"
+        className="hover:text-foreground transition-all hover:scale-105"
+      >
         Features
       </a>
-      <a href="#domains" className="hover:text-foreground transition-all hover:scale-105">
+      <a
+        href="#domains"
+        className="hover:text-foreground transition-all hover:scale-105"
+      >
         Domains
       </a>
-      <a href="#how-it-works" className="hover:text-foreground transition-all hover:scale-105">
+      <a
+        href="#how-it-works"
+        className="hover:text-foreground transition-all hover:scale-105"
+      >
         How It Works
       </a>
-      <a href="#architecture" className="hover:text-foreground transition-all hover:scale-105">
+      <a
+        href="#architecture"
+        className="hover:text-foreground transition-all hover:scale-105"
+      >
         Architecture
       </a>
+
+      {/* ✅ Dashboard (ONLY ONCE) */}
       <button
         onClick={() => navigate("/dashboard")}
         className="hover:text-foreground transition-all hover:scale-105"
@@ -96,14 +110,6 @@ const Landing = () => {
         <ThemeToggle />
       </div>
 
-      {/* Dashboard button (mobile visible) */}
-      <button
-        onClick={() => navigate("/dashboard")}
-        className="hidden sm:inline-flex px-4 py-2 rounded-lg border border-border text-sm font-medium hover:bg-muted transition-colors"
-      >
-        Dashboard
-      </button>
-
       {/* Launch */}
       <button
         onClick={() => navigate("/translate")}
@@ -116,7 +122,6 @@ const Landing = () => {
 
   </div>
 </nav>
-
       {/* ─── Hero ─── */}
       <section className="relative overflow-hidden z-10">
         {/* Background glow */}
