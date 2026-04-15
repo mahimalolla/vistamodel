@@ -5,6 +5,8 @@ import {
   Globe,
   Zap,
   Shield,
+  ShieldCheck,
+  Lock,
   ArrowRight,
   Stethoscope,
   Scale,
