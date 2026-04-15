@@ -45,31 +45,64 @@ const Landing = () => {
       <StarfieldBackground />
 
       {/* ─── Navbar ─── */}
-      <nav className="sticky top-0 z-50 border-b border-border/50 bg-card/60 backdrop-blur-xl">
-        <div className="max-w-6xl mx-auto flex items-center justify-between px-6 py-5">
-          <div className="flex items-center gap-2.5">
-        <img
-          src={isDark ? vistaLogoDark : vistaLogo}
-          alt="VISTA"
-          className="w-10 h-10 md:w-12 md:h-12"
-/>
-<span className="text-lg md:text-xl font-bold tracking-tight">
-  VISTA
-</span>
+      <nav className="sticky top-0 z-50 border-b border-white/10 bg-background/55 backdrop-blur-2xl supports-[backdrop-filter]:bg-background/45 shadow-[0_8px_30px_rgb(0,0,0,0.12)]">
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 md:px-8 py-4 md:py-5">
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="relative">
+              <div className="absolute inset-0 rounded-full bg-primary/20 blur-lg" />
+              <img
+                src={isDark ? vistaLogoDark : vistaLogo}
+                alt="VISTA"
+                className="relative w-11 h-11 md:w-14 md:h-14 rounded-xl object-contain"
+              />
+            </div>
+            <div className="flex flex-col leading-none">
+              <span className="text-lg md:text-2xl font-extrabold tracking-tight text-foreground">
+                VISTA
+              </span>
+              <span className="hidden md:block text-[11px] uppercase tracking-[0.22em] text-muted-foreground mt-1">
+                Real-time voice translation
+              </span>
+            </div>
           </div>
-          <div className="hidden md:flex items-center gap-8 text-sm text-muted-foreground">
-            <a href="#features" className="hover:text-foreground transition-colors">Features</a>
-            <a href="#domains" className="hover:text-foreground transition-colors">Domains</a>
-            <a href="#how-it-works" className="hover:text-foreground transition-colors">How It Works</a>
-            <a href="#architecture" className="hover:text-foreground transition-colors">Architecture</a>
+
+          <div className="hidden md:flex items-center gap-8 lg:gap-10 text-sm md:text-base font-medium text-muted-foreground">
+            <a
+              href="#features"
+              className="transition-all duration-200 hover:text-foreground hover:scale-105"
+            >
+              Features
+            </a>
+            <a
+              href="#domains"
+              className="transition-all duration-200 hover:text-foreground hover:scale-105"
+            >
+              Domains
+            </a>
+            <a
+              href="#how-it-works"
+              className="transition-all duration-200 hover:text-foreground hover:scale-105"
+            >
+              How It Works
+            </a>
+            <a
+              href="#architecture"
+              className="transition-all duration-200 hover:text-foreground hover:scale-105"
+            >
+              Architecture
+            </a>
           </div>
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
+
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="scale-110 md:scale-125">
+              <ThemeToggle />
+            </div>
             <button
               onClick={() => navigate("/translate")}
-              className="px-4 py-2 rounded-lg bg-primary text-primary-foreground text-sm font-medium hover:bg-primary/90 transition-colors shadow-sm shadow-primary/20"
+              className="group inline-flex items-center gap-2 px-5 md:px-6 py-2.5 md:py-3 rounded-xl bg-primary text-primary-foreground text-sm md:text-base font-semibold transition-all duration-300 shadow-[0_0_25px_rgba(255,165,0,0.22)] hover:bg-primary/90 hover:scale-[1.03] active:scale-[0.98]"
             >
               Launch App
+              <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-0.5" />
             </button>
           </div>
         </div>
