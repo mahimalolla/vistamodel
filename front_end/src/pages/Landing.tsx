@@ -93,7 +93,7 @@ const Landing = () => {
 
             <h2 className="text-3xl md:text-5xl font-bold mb-3">
               with{" "}
-              <span className="text-[#ff4500]">
+              <span className="text-primary">
                 VISTA
               </span>
             </h2>
